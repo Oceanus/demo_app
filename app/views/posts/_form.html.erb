@@ -1,6 +1,6 @@
-<%= form_for(@post) do |f| %>
+<%= form_for(@post) do |post_form| %>
   <% if @post.errors.any? %>
-    <div id="error_explanation">
+    <div id="errorExplanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
@@ -23,7 +23,10 @@
     <%= f.label :content %><br />
     <%= f.text_area :content %>
   </div>
+  <h2>Tags</h2>
+  <%= render :partial => 'tags/form',
+             :locals => {:form => post_form} %>
   <div class="actions">
-    <%= f.submit %>
+    <%= post_form.submit %>
   </div>
 <% end %>
